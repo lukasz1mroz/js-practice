@@ -1,0 +1,2 @@
+AJAX: (js + xml -> json) set of asynchronous (run in background without stopping page) technologies for client - server call. AJAX engine is middle man translating JS call to XmlHttpRequest and then JSON response to html. Can be done in plain JS or jQuery/fetch API or libraries. 
+XHR: API in object form provided by browser JS env, can be used with other protocols than HTTP, methods for data transfer
