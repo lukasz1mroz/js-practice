@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <style>
+      #chain {
+        font-size: 50px;
+      }
+    </style>
+    <title>Animated icons</title>
+  </head>
+  <body>
+    <div id="chain" class="fa"></div>
+  </body>
+  <script>
+    function breakChain() {
+      var chain = document.getElementById("chain");
+      chain.innerHTML = "&#xF0c1;";
+      setTimeout(() => {
+        chain.innerHTML = "&#xf127";
+      }, 1000);
+    }
+
+    breakChain();
+
+    setInterval(breakChain, 2000);
+  </script>
+</html>

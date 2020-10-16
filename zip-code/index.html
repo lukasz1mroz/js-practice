@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
+    <title>Zipcode app</title>
+
+    <style>
+      .icon-remove,
+      .icon-check {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="hero hero-body is-dark container">
+      <h1 class="title">Poland location info</h1>
+      <h2 class="subtitle">Enter zipcode to get location info</h2>
+      <form id="zipForm">
+        <div class="field">
+          <div class="control has-icons-left has-icons-right">
+            <input
+              class="input zip is-large"
+              type="text"
+              placeholder="Input zip"
+            />
+            <span class="icon is-small is-left">
+              <i class="fa fa-map-pin"></i>
+            </span>
+            <span class="icon is-small is-right icon-check">
+              <i class="fa fa-check"></i>
+            </span>
+            <span class="icon is-small is-right icon-remove">
+              <i class="fa fa-remove"></i>
+            </span>
+          </div>
+        </div>
+      </form>
+    </section>
+    <div class="container">
+      <div id="output"></div>
+    </div>
+
+    <script>
+      document
+        .querySelector("#zipForm")
+        .addEventListener("submit", getLocationInfo);
+
+      function getLocationInfo(e) {
+        var zip = document.querySelector(".zip").value;
+
+        fetch(`http://api.zippopotam.us/PL/${zip}`)
+          .then((res) => {
+            if (res.status != 200) {
+              showIcon("remove");
+              document.querySelector(
+                "#output"
+              ).innerHTML = `<article class="message is-warning">Wrong zipcode</article>`;
+              throw Error(res.statusText);
+            } else {
+              showIcon("check");
+              return res.json();
+            }
+          })
+          .then((data) => {
+            let output = ``;
+            data.places.forEach((place) => {
+              output += `<ul>
+                <li>City: ${place["place name"]}</li></ul>`;
+            });
+            document.querySelector("#output").innerHTML = output;
+          })
+          .catch((err) => console.log(err));
+
+        e.preventDefault();
+      }
+
+      function showIcon(icon) {
+        document.querySelector(".icon-remove").style.display = "none";
+        document.querySelector(".icon-check").style.display = "none";
+        document.querySelector(`.icon-${icon}`).style.display = "inline-flex";
+      }
+    </script>
+  </body>
+</html>
