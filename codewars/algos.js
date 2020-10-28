@@ -73,9 +73,20 @@ function population(p0, percent, aug, p) {
   console.log(i);
 }
 
-isPangram("abcdefghijklmnopq.rstuvwxyz");
-highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6");
-sumTwoSmallestNumbers([19, 5, 42, 2, 77]);
-divisors(4);
-xoxo("ooxx");
-population(1500, 5, 100, 5000);
+function humanReadable(input) {
+  if (input === 0) return "00:00:00";
+  var hours = Math.trunc(input / 60 / 60);
+  var minutes = Math.trunc((input - hours * 60 * 60) / 60);
+  var seconds = Math.trunc(input - hours * 60 * 60 - minutes * 60);
+  var results = [hours, minutes, seconds];
+  var output = results.map((result) => (result < 10 ? "0" + result : result));
+
+  console.log(`${output[0]}:${output[1]}:${output[2]}`);
+}
+
+// isPangram("abcdefghijklmnopq.rstuvwxyz");
+// highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6");
+// sumTwoSmallestNumbers([19, 5, 42, 2, 77]);
+// divisors(4);
+// xoxo("ooxx");
+// humanReadable(5);

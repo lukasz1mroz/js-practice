@@ -1,0 +1,35 @@
+body {
+  background: darksalmon;
+}
+
+.fill {
+  background-image: url("../image_slider/images/pexels-trang-doan-1092730.jpg");
+  position: relative;
+  height: 150px;
+  width: 150px;
+  top: 5px;
+  left: 5px;
+  cursor: pointer;
+}
+
+.empty {
+  display: inline-block;
+  height: 160px;
+  width: 160px;
+  margin: 10px;
+  border: 3px salmon solid;
+  background-color: white;
+}
+
+.hold {
+  border: solid lightblue 4px;
+}
+
+.hovered {
+  background: goldenrod;
+  border-style: dashed;
+}
+
+.invisible {
+  display: none;
+}
