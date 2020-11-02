@@ -84,9 +84,25 @@ function humanReadable(input) {
   console.log(`${output[0]}:${output[1]}:${output[2]}`);
 }
 
+function toWeirdCase(word) {
+  let outcome = "";
+  let even = true;
+  for (let i = 0; i < word.length; i++) {
+    if (even == true && word.charAt(i).match(/[a-z]/i)) {
+      outcome += word.charAt(i).toUpperCase();
+      even = false;
+    } else {
+      outcome += word.charAt(i);
+      even = true;
+    }
+  }
+  console.log(outcome);
+}
+
 // isPangram("abcdefghijklmnopq.rstuvwxyz");
 // highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6");
 // sumTwoSmallestNumbers([19, 5, 42, 2, 77]);
 // divisors(4);
 // xoxo("ooxx");
 // humanReadable(5);
+toWeirdCase("This is a test");
