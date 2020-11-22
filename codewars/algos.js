@@ -99,10 +99,20 @@ function toWeirdCase(word) {
   console.log(outcome);
 }
 
+function solution(string) {
+  console.log((string + "_").match(/.{2}/g) || []);
+}
+
+function snail(array) {
+  // https://www.codewars.com/kata/521c2db8ddc89b9b7a0000c1/train/javascript
+  // If empty or 1, return itself
+}
+
 // isPangram("abcdefghijklmnopq.rstuvwxyz");
 // highAndLow("4 5 29 54 4 0 -214 542 -64 1 -3 6 -6");
 // sumTwoSmallestNumbers([19, 5, 42, 2, 77]);
 // divisors(4);
 // xoxo("ooxx");
 // humanReadable(5);
-toWeirdCase("This is a test");
+// toWeirdCase("This is a test");
+// solution("abcdefg");
